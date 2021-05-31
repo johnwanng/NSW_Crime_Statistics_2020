@@ -1,0 +1,17 @@
+﻿ID,Gender,Age,dv_no,other_no
+1,Male,Under 18,1767,1441
+2,Male,18 - 19,437,382
+3,Male,20 - 29,2333,2211
+4,Male,30 - 39,2132,2255
+5,Male,40 - 49,1931,2394
+6,Male,50 - 59,1342,1884
+7,Male,60+,1100,1643
+8,Male,Missing / unknown,85,66
+9,Female,Under 18,2167,3135
+10,Female,18 - 19,1154,1564
+11,Female,20 - 29,6579,10617
+12,Female,30 - 39,5911,10442
+13,Female,40 - 49,4280,7558
+14,Female,50 - 59,1992,3653
+15,Female,60+,1162,2424
+16,Female,Missing / unknown,88,82

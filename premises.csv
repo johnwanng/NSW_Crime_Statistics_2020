@@ -1,0 +1,22 @@
+﻿ID,Premise type,dv_no,other_no
+1,Adult entertainment,3,6
+2,Financial institution,4,10
+3,Office,26,52
+4,Personal services,49,97
+5,Retail/wholesale,477,831
+6,Carpark,187,212
+7,Education,76,176
+8,Health,138,220
+9,Industrial,23,30
+10,Law enforcement,73,698
+11,Licensed premises,264,297
+12,Marine transport,4,2
+13,Outdoor/public place,2317,2941
+14,Recreation,37,55
+15,Religious,12,10
+16,Residential,28085,43639
+17,Rural industry,11,4
+18,Public transport,123,162
+19,Utilities,2,15
+20,Vehicle,87,64
+21,Unknown,80,316

@@ -1,0 +1,31 @@
+﻿ID,Gender,Offender_age,Domestic violence related assault,Others
+1,Male,Under 18,613,1217
+2,Male,18 - 19,393,730
+3,Male,20 - 24,1407,2347
+4,Male,25 - 29,1642,2926
+5,Male,30 - 39,3149,5754
+6,Male,40 - 49,2388,4050
+7,Male,50 - 59,989,1417
+8,Male,60 - 65,209,283
+9,Male,Over 65,198,216
+10,Male,Missing / unknown,14,10
+11,Female,Under 18,399,431
+12,Female,18 - 19,195,195
+13,Female,20 - 24,548,562
+14,Female,25 - 29,543,600
+15,Female,30 - 39,996,1016
+16,Female,40 - 49,753,827
+17,Female,50 - 59,304,272
+18,Female,60 - 65,56,28
+19,Female,Over 65,34,34
+20,Female,Missing / unknown,9,8
+21,Unknown,Under 18,0,1
+22,Unknown,18 - 19,0,1
+23,Unknown,20 - 24,0,0
+24,Unknown,25 - 29,1,0
+25,Unknown,30 - 39,2,1
+26,Unknown,40 - 49,1,0
+27,Unknown,50 - 59,1,0
+28,Unknown,60 - 65,0,0
+29,Unknown,Over 65,0,0
+30,Unknown,Missing / unknown,0,0
