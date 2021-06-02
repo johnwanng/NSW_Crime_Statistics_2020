@@ -1,3 +1,19 @@
+import numpy as np
+import random, json
+
+#################################################
+# Database Setup
+#################################################
+#from sqlalchemy import create_engine
+import psycopg2 as pg
+import pandas.io.sql as psql
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt2
+import numpy as np
+from sqlalchemy import create_engine, func, extract
+from sqlalchemy.orm import Session
+
+
 # import necessary libraries
 from models import create_classes
 import os
@@ -32,6 +48,20 @@ Pet = create_classes(db)
 def home():
     return render_template("index.html")
 
+
+@app.route('/api/v1.0/locationData', methods=['GET','POST'])       
+def coashData():
+  # connect to Postgres FIFA_projectTWO database
+  connection = create_engine('postgresql://test:test@localhost/domestic_violence')
+  # make a connection
+  session = Session(connection)
+
+  location = psql.read_sql('select id,location from location order by 1', connection)
+   # Close the database connection session
+  session.close()
+
+  location = location.to_json()
+  return location
 
 # Query the database and send the jsonified results
 @app.route("/send", methods=["GET", "POST"])
