@@ -26,3 +26,5 @@ webencodings==0.5.1
 Werkzeug==2.0.1
 wrapt==1.12.1
 gunicorn==20.1.0
+matplotlib
+psycopg2
