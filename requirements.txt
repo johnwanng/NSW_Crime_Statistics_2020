@@ -19,8 +19,6 @@ PyYAML==5.4.1
 pyzmq==20.0.0
 SQLAlchemy==1.4.17
 tensorboard==2.0.0
-tensorflow==2.0.0
-tensorflow-estimator==2.0.0
 termcolor==1.1.0
 terminado==0.9.4
 traitlets==4.3.3
