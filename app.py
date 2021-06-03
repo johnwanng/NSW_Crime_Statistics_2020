@@ -50,9 +50,9 @@ def home():
 
 
 @app.route('/api/v1.0/locationData', methods=['GET','POST'])       
-def coashData():
-  # connect to Postgres FIFA_projectTWO database
-  connection = create_engine('postgresql://test:test@localhost/domestic_violence')
+def locationData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine('postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq')
   # make a connection
   session = Session(connection)
 
@@ -62,6 +62,23 @@ def coashData():
 
   location = location.to_json()
   return location
+
+
+@app.route('/api/v1.0/premiseData', methods=['GET','POST'])       
+def premiseData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine('postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq')
+  # make a connection
+  session = Session(connection)
+
+  premise = psql.read_sql('select id,premise from premise order by 1', connection)
+   # Close the database connection session
+  session.close()
+
+  premise = premise.to_json()
+  return premise
+
+
 
 # Query the database and send the jsonified results
 @app.route("/send", methods=["GET", "POST"])
