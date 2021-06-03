@@ -54,8 +54,14 @@
             <div class="col-md-2">
               <div class="well">
                 <h5>Location:</h5>
-                <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                <select id="locationList" onchange="optionChanged(this.value,1)"></select>
               </div>
+              <div class="well">
+                <h5>Premise:</h5>
+                <select id="premiseList" onchange="optionChanged(this.value,2)"></select>
+              </div>
+
+
               <div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Demographic Info</h3>
