@@ -28,3 +28,4 @@ wrapt==1.12.1
 gunicorn==20.1.0
 matplotlib
 psycopg2
+pickle

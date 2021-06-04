@@ -24,7 +24,7 @@
     <body>
         <div class="container">
             <div class="jumbotron" style="text-align: center">
-                <h1>Pet Pal</h1>
+   <!---             <h1>Pet Pal</h1>
                 <p>Enter your pet's details below!</p>
             </div>
             <div class="row">
@@ -46,12 +46,12 @@
                     </form>
                 </div>
             </div>
-
         </div>
-
+--->
 
         <div class="row">
-            <div class="col-md-2">
+          <div class="col-md-12">
+            <form method="POST" action="/predict" role="form", name="petform">
               <div class="well">
                 <h5>Location:</h5>
                 <select id="locationList" onchange="optionChanged(this.value,1)"></select>
@@ -60,26 +60,36 @@
                 <h5>Premise:</h5>
                 <select id="premiseList" onchange="optionChanged(this.value,2)"></select>
               </div>
-
-
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Demographic Info</h3>
-                </div>
-                <div id="sample-metadata" class="panel-body"></div>
+              <div class="well">
+                <h5>Alcohol Related:</h5>
+                <select id="alcoholList" onchange="optionChanged(this.value,3)"></select>
               </div>
-            </div>
-            <div class="col-md-5">
-              <div id="bar"></div>
-            </div>
-            <div class="col-md-5">
-              <div id="gauge"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div id="bubble"></div>
-            </div>
+              <div class="well">
+                <h5>Relationship:</h5>
+                <select id="relationshipList" onchange="optionChanged(this.value,4)"></select>
+              </div>
+              <div class="well">
+                <h5>Month:</h5>
+                <select id="monthList" onchange="optionChanged(this.value,5)"></select>
+              </div>    
+              <div class="well">
+                <h5>Day:</h5>
+                <select id="dayList" onchange="optionChanged(this.value,6)"></select>
+              </div>             
+              <div class="well">
+                <h5>Time:</h5>
+                <select id="timeList" onchange="optionChanged(this.value,7)"></select>
+              </div> 
+              <div class="well">
+                <h5>Victim Gender:</h5>
+                <select id="genderList" onchange="optionChanged(this.value,8)"></select>
+              </div>                                
+              <div class="well">
+                <h5>Victim Age Ranges:</h5>
+                <select id="ageList" onchange="optionChanged(this.value,9)"></select>
+              </div>    
+              <input type="submit" value="submit" class="btn btn-default">
+             </form>
           </div>
         </div>
 

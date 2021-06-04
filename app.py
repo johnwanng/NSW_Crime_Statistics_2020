@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt2
 import numpy as np
 from sqlalchemy import create_engine, func, extract
 from sqlalchemy.orm import Session
+from pickle import dump, load
 
 
 # import necessary libraries
@@ -34,14 +35,17 @@ app = Flask(__name__)
 #################################################
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+# app.config['SQLALCHEMY_DATABASE_URI'] = 
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+# connect to Postgres Domestioc Violence database via heroku url or from the hardcoded crdential definitiomns
+URI = os.environ.get('DATABASE_URL', '') or 'postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq'
 
-Pet = create_classes(db)
+#db = SQLAlchemy(app)
+
+#Pet = create_classes(db)
 
 # create route that renders index.html template
 @app.route("/")
@@ -51,8 +55,11 @@ def home():
 
 @app.route('/api/v1.0/locationData', methods=['GET','POST'])       
 def locationData():
-  # connect to Postgres Domestioc Violence database
-  connection = create_engine('postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq')
+
+  connection = create_engine(URI)
+
+  #connection = create_engine('postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq')
+#   connection = create_engine(db)
   # make a connection
   session = Session(connection)
 
@@ -67,7 +74,8 @@ def locationData():
 @app.route('/api/v1.0/premiseData', methods=['GET','POST'])       
 def premiseData():
   # connect to Postgres Domestioc Violence database
-  connection = create_engine('postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq')
+  connection = create_engine(URI)
+
   # make a connection
   session = Session(connection)
 
@@ -80,20 +88,155 @@ def premiseData():
 
 
 
-# Query the database and send the jsonified results
+@app.route('/api/v1.0/alcoholData', methods=['GET','POST'])       
+def alcoholData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  alcohol = psql.read_sql('select id,alcohol from alcohol order by 1', connection)
+   # Close the database connection session
+  session.close()
+
+  alcohol = alcohol.to_json()
+  return alcohol
+
+
+@app.route('/api/v1.0/relationshipData', methods=['GET','POST'])       
+def relationshipData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  relationship = psql.read_sql('SELECT id, relationship FROM offender_victim_relation order by 1', connection)
+   # Close the database connection session
+  session.close()
+
+  relationship = relationship.to_json()
+  return relationship
+
+@app.route('/api/v1.0/monthData', methods=['GET','POST'])       
+def monthData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  month = psql.read_sql("select month as id,to_char(to_date(month::text,'MM'),'Month') as month from month order by 1", connection)
+   # Close the database connection session
+  session.close()
+
+  month = month.to_json()
+  return month
+
+
+@app.route('/api/v1.0/dayData', methods=['GET','POST'])       
+def dayData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  day = psql.read_sql("select id,day from day order by 1", connection)
+   # Close the database connection session
+  session.close()
+
+  day = day.to_json()
+  return day
+
+@app.route('/api/v1.0/timeData', methods=['GET','POST'])       
+def timeData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  time = psql.read_sql("select id,time from time order by 1", connection)
+   # Close the database connection session
+  session.close()
+
+  time = time.to_json()
+  return time
+
+@app.route('/api/v1.0/vGenderData', methods=['GET','POST'])       
+def genderData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  gender = psql.read_sql("select id,gender from gender order by 1", connection)
+   # Close the database connection session
+  session.close()
+
+  gender = gender.to_json()
+  return gender  
+
+@app.route('/api/v1.0/vAgeData', methods=['GET','POST'])       
+def ageData():
+  # connect to Postgres Domestioc Violence database
+  connection = create_engine(URI)
+
+  # make a connection
+  session = Session(connection)
+
+  age = psql.read_sql("select id,age from victim_age order by 1", connection)
+   # Close the database connection session
+  session.close()
+
+  age = age.to_json()
+  return age 
+
+
 @app.route("/send", methods=["GET", "POST"])
 def send():
-    if request.method == "POST":
-        name = request.form["petName"]
-        lat = request.form["petLat"]
-        lon = request.form["petLon"]
-
-        pet = Pet(name=name, lat=lat, lon=lon)
-        db.session.add(pet)
-        db.session.commit()
-        return redirect("/", code=302)
-
     return render_template("form.html")
+
+
+@app.route("/predict", methods=["GET", "POST"])
+def predict():
+    if request.method == "POST":
+        locationList = request.form["locationList"]
+        premiseList = request.form["premiseList"]
+        alcoholList = request.form["alcoholList"]
+        relationshipList = request.form["relationshipList"]
+        monthList = request.form["monthList"]
+        dayList = request.form["dayList"]
+        timeList = request.form["timeList"]
+        genderList = request.form["genderList"]
+        ageList = request.form["ageList"]
+        
+        # open the saved model and scaler
+        # load the model
+        storedModel = load(open('model.sav', 'rb'))
+        # load the scaler
+        storedScaler = load(open('scaler.sav', 'rb'))
+        prediction = [[4,6,2,5,6,7,1,2,127]]
+
+        print(ageList)
+        scaled_prediction = storedScaler.transform(prediction)
+        p = storedModel.predict(scaled_prediction)
+
+        def result(prediction):
+            result = 'False'
+            if prediction[0] == 1:
+                result = 'True'
+            return result    
+        print(p)
+        #pet = Pet(name=name, lat=lat, lon=lon)
+        #db.session.add(pet)
+        #db.session.commit()
+        #return redirect("/", code=302)
+    return render_template("result.html")
+
 
 
 @app.route("/api/pals")
