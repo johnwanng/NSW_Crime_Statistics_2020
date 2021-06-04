@@ -40,7 +40,9 @@ from flask_sqlalchemy import SQLAlchemy
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # connect to Postgres Domestioc Violence database via heroku url or from the hardcoded crdential definitiomns
-URI = os.environ.get('DATABASE_URL', '') or 'postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq'
+#URI = os.environ.get('DATABASE_URL', '') or 'postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq'
+
+URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) or 'postgresql://ikrqwnaviefoab:1599ac91e297d9bf0bc9299178d8113ac864f2fabf0004cbbaf0fcc9fb43d981@ec2-34-232-191-133.compute-1.amazonaws.com/d68b0k11d6t4uq'
 
 #db = SQLAlchemy(app)
 
