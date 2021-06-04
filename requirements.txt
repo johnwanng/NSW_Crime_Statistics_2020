@@ -28,5 +28,4 @@ wrapt==1.12.1
 gunicorn==20.1.0
 matplotlib
 psycopg2
-pickle
 scikit-learn==0.23.2
