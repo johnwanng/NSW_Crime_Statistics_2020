@@ -49,44 +49,46 @@
         </div>
 --->
 
+                <!--<select name="premiseList" id="premiseList" onchange="optionChanged(this.value,2)"></select>-->
+
         <div class="row">
           <div class="col-md-12">
-            <form method="POST" action="/predict" role="form", name="petform">
+            <form method="POST" action="/predict"> <!--</form> role="form"> </form>, name="petform">-->
               <div class="well">
                 <h5>Location:</h5>
-                <select id="locationList" onchange="optionChanged(this.value,1)"></select>
+                <select name="locationList" id="locationList"></select>
               </div>
               <div class="well">
                 <h5>Premise:</h5>
-                <select id="premiseList" onchange="optionChanged(this.value,2)"></select>
+                <select name="premiseList" id="premiseList"></select>
               </div>
               <div class="well">
                 <h5>Alcohol Related:</h5>
-                <select id="alcoholList" onchange="optionChanged(this.value,3)"></select>
+                <select name="alcoholList" id="alcoholList"></select>
               </div>
               <div class="well">
                 <h5>Relationship:</h5>
-                <select id="relationshipList" onchange="optionChanged(this.value,4)"></select>
+                <select name="relationshipList" id="relationshipList"></select>
               </div>
               <div class="well">
                 <h5>Month:</h5>
-                <select id="monthList" onchange="optionChanged(this.value,5)"></select>
+                <select name="monthList" id="monthList" ></select>
               </div>    
               <div class="well">
                 <h5>Day:</h5>
-                <select id="dayList" onchange="optionChanged(this.value,6)"></select>
+                <select name="dayList" id="dayList" ></select>
               </div>             
               <div class="well">
                 <h5>Time:</h5>
-                <select id="timeList" onchange="optionChanged(this.value,7)"></select>
+                <select name="timeList" id="timeList" ></select>
               </div> 
               <div class="well">
                 <h5>Victim Gender:</h5>
-                <select id="genderList" onchange="optionChanged(this.value,8)"></select>
+                <select name="genderList" id="genderList"></select>
               </div>                                
               <div class="well">
                 <h5>Victim Age Ranges:</h5>
-                <select id="ageList" onchange="optionChanged(this.value,9)"></select>
+                <select name="ageList" id="ageList"></select>
               </div>    
               <input type="submit" value="submit" class="btn btn-default">
              </form>

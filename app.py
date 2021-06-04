@@ -67,7 +67,7 @@ def locationData():
    # Close the database connection session
   session.close()
 
-  location = location.to_json()
+  location = location.to_json(orient='records')
   return location
 
 
@@ -83,7 +83,7 @@ def premiseData():
    # Close the database connection session
   session.close()
 
-  premise = premise.to_json()
+  premise = premise.to_json(orient='records')
   return premise
 
 
@@ -100,7 +100,7 @@ def alcoholData():
    # Close the database connection session
   session.close()
 
-  alcohol = alcohol.to_json()
+  alcohol = alcohol.to_json(orient='records')
   return alcohol
 
 
@@ -116,7 +116,7 @@ def relationshipData():
    # Close the database connection session
   session.close()
 
-  relationship = relationship.to_json()
+  relationship = relationship.to_json(orient='records')
   return relationship
 
 @app.route('/api/v1.0/monthData', methods=['GET','POST'])       
@@ -131,7 +131,7 @@ def monthData():
    # Close the database connection session
   session.close()
 
-  month = month.to_json()
+  month = month.to_json(orient='records')
   return month
 
 
@@ -147,7 +147,7 @@ def dayData():
    # Close the database connection session
   session.close()
 
-  day = day.to_json()
+  day = day.to_json(orient='records')
   return day
 
 @app.route('/api/v1.0/timeData', methods=['GET','POST'])       
@@ -162,7 +162,7 @@ def timeData():
    # Close the database connection session
   session.close()
 
-  time = time.to_json()
+  time = time.to_json(orient='records')
   return time
 
 @app.route('/api/v1.0/vGenderData', methods=['GET','POST'])       
@@ -177,7 +177,7 @@ def genderData():
    # Close the database connection session
   session.close()
 
-  gender = gender.to_json()
+  gender = gender.to_json(orient='records')
   return gender  
 
 @app.route('/api/v1.0/vAgeData', methods=['GET','POST'])       
@@ -192,7 +192,7 @@ def ageData():
    # Close the database connection session
   session.close()
 
-  age = age.to_json()
+  age = age.to_json(orient='records')
   return age 
 
 
@@ -219,9 +219,21 @@ def predict():
         storedModel = load(open('model.sav', 'rb'))
         # load the scaler
         storedScaler = load(open('scaler.sav', 'rb'))
-        prediction = [[4,6,2,5,6,7,1,2,127]]
+        #prediction = [[4,6,2,5,6,7,1,2,127]]
 
-        print(ageList)
+        prediction = [[monthList,premiseList,genderList,ageList,relationshipList,dayList,timeList,alcoholList,locationList]]
+        # Prediction 2 Profile
+        # 3 -   Month   :"March"
+        # 16 -  Premise :"Residential"
+        # 1 -   Gender  :"Male"
+        # 4 -	Victum Age: "30 - 39"
+        # 12 -  Relationship with Victim:   "Not Known To Victim"	
+        # 7 -   Day     :"Sunday"
+        # 4 -   Time    :"6pm - < 12pm"
+        # 2 -   Alcohol :"N"
+        # 60 -  Location:"Kempsey"
+
+        #print(ageList)
         scaled_prediction = storedScaler.transform(prediction)
         p = storedModel.predict(scaled_prediction)
 
@@ -235,6 +247,7 @@ def predict():
         #db.session.add(pet)
         #db.session.commit()
         #return redirect("/", code=302)
+
     return render_template("result.html")
 
 
