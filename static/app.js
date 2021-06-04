@@ -1,24 +1,3 @@
-var locationList = {};
-var premiseList = {};
-var alcoholList = {};
-var relationshipList = {};
-var monthList = {};
-var dayList = {};
-var timeList = {};
-var genderList = {};
-var ageList = {};
-
-// Store the indexes
-var locationId = 0;
-var premiseId = 0;
-var alcoholId = 0;
-var relationshipId = 0;
-var monthId = 0;
-var dayId = 0;
-var timeId = 0;
-var genderId = 0;
-var ageId = 0;
-
 // Incoming data is internally referred to as incomingData
 d3.json("/api/v1.0/locationData").then((importedData) => {
 
@@ -159,23 +138,3 @@ d3.json("/api/v1.0/dayData").then((importedData) => {
   //Dispolay the demographic info for the first element of the array
   //optionChanged(importedData.age[0]);
   }) 
-
-
-  //Function to detect a change in the list item
-function optionChanged(selectedName,listNumber) {
-  //console.log(selectedName);
-  //Find the index of the id array matching the value of the selectedName
-  switch (listNumber) {        
-    default:
-      break;  
-  }
-  console.log(locationId);
-  console.log(premiseId);
-  console.log(alcoholId);
-  console.log(relationshipId);
-  console.log(monthId);
-  console.log(dayId);
-  console.log(timeId);
-  console.log(genderId);
-  console.log(ageId);
-} 
