@@ -22,35 +22,10 @@
         crossorigin="anonymous"></script>
 
     <body>
-        <div class="container">
-            <div class="jumbotron" style="text-align: center">
-   <!---             <h1>Pet Pal</h1>
-                <p>Enter your pet's details below!</p>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <form method="POST" action="/send" role="form", name="petform">
-                        <div class="form-group">
-                            <label for="inputName">Pet Name</label>
-                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLat">Pet Location Lat</label>
-                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLon">Pet Location Lon</label>
-                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
-                        </div>
-                        <input type="submit" value="submit" class="btn btn-default">
-                    </form>
-                </div>
-            </div>
-        </div>
---->
-
-                <!--<select name="premiseList" id="premiseList" onchange="optionChanged(this.value,2)"></select>-->
-
+    <div class="container">
+      <div class="jumbotron" style="text-align: center">
+        Select values from the Drop downs below and hit the submit button at the bottom to make a prediction of a domestic violence occurrence 
+        <form> <input type="button" value="Back to visualisation" onclick="history.back()"></form>
         <div class="row">
           <div class="col-md-12">
             <form method="POST" action="/predict"> <!--</form> role="form"> </form>, name="petform">-->
@@ -94,7 +69,8 @@
              </form>
           </div>
         </div>
-
+      </div>
+    </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
