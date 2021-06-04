@@ -12,8 +12,7 @@ import matplotlib.pyplot as plt2
 import numpy as np
 from sqlalchemy import create_engine, func, extract
 from sqlalchemy.orm import Session
-from pickle import dump, load
-
+import joblib
 
 # import necessary libraries
 from models import create_classes
@@ -214,25 +213,11 @@ def predict():
         genderList = request.form["genderList"]
         ageList = request.form["ageList"]
         
-        # open the saved model and scaler
-        # load the model
-        storedModel = load(open('model.sav', 'rb'))
-        # load the scaler
-        storedScaler = load(open('scaler.sav', 'rb'))
-        #prediction = [[4,6,2,5,6,7,1,2,127]]
-
+        # open the saved model and scaler files
+        storedModel = joblib.load("domestic_violence_model_trained.pkl")
+        storedScaler = joblib.load("domestic_violence_model_scaled.pkl")
+        
         prediction = [[monthList,premiseList,genderList,ageList,relationshipList,dayList,timeList,alcoholList,locationList]]
-        # Prediction 2 Profile
-        # 3 -   Month   :"March"
-        # 16 -  Premise :"Residential"
-        # 1 -   Gender  :"Male"
-        # 4 -	Victum Age: "30 - 39"
-        # 12 -  Relationship with Victim:   "Not Known To Victim"	
-        # 7 -   Day     :"Sunday"
-        # 4 -   Time    :"6pm - < 12pm"
-        # 2 -   Alcohol :"N"
-        # 60 -  Location:"Kempsey"
-
         #print(ageList)
         scaled_prediction = storedScaler.transform(prediction)
         p = storedModel.predict(scaled_prediction)

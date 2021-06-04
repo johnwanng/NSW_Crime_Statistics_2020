@@ -1,10 +1,8 @@
+import joblib
 
-from pickle import dump, load
-from sklearn.svm import SVC
+storedModel = joblib.load("domestic_violence_model_trained.pkl")
+storedScaler = joblib.load("domestic_violence_model_scaled.pkl")
 
-storedModel = load(open('model.sav', 'rb'))
-# load the scaler
-storedScaler = load(open('scaler.sav', 'rb'))
 prediction = [[4,6,2,5,6,7,1,2,127]]
 
 #print(ageList)

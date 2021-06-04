@@ -30,7 +30,7 @@ matplotlib
 psycopg2
 scikit-learn==0.23.2
 numpy
-
+joblib
 pyarrow==3.0.0
 PyYAML==5.4.1
 pyzmq==20.0.0
