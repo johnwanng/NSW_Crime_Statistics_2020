@@ -37,13 +37,12 @@ d3.json("/api/v1.0/locationData").then((importedData) => {
 // Incoming data is internally referred to as incomingData
 d3.json("/api/v1.0/premiseData").then((importedData) => {
 
-  console.log(importedData);
   d3.select("#premiseList")
       .selectAll(null)
       .data(importedData)
       .enter()
       .append('option')
-      .text(function (d) { return d.premnise; }) // text showed in the menu
+      .text(function (d) { return d.premise; }) // text showed in the menu
       .attr("value", function (d) { return d.id; }) // value kept in the menu
   //Dispolay the demographic info for the first element of the array
   //optionChanged(importedData.premise[0]);
