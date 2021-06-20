@@ -1,3 +1,32 @@
+d3.json("/api/v1.0/allCrimesData").then((importedData) => {
+  var x1 = []
+  var y1 = []
+  for (var i=0; i< importedData.length; i++){
+    x1.push(importedData[i].crime_type)
+    y1.push(importedData[i].no)
+  }
+  // Create the Trace
+  var trace1 = {
+    x: x1,
+    y: y1,
+    type: "bar"
+  };
+
+
+  // Create the data array for the plot
+  var data = [trace1];
+
+  // Define the plot layout
+  var layout = {
+    title: "Major Crimes committed in NSW 2020",
+    yaxis: { title: "No. of incidents" }
+  };
+
+  // Plot the chart to a div tag with id "bar-plot"
+  Plotly.newPlot("bar", data, layout);
+})
+
+
 // Incoming data is internally referred to as incomingData
 d3.json("/api/v1.0/locationData").then((importedData) => {
 

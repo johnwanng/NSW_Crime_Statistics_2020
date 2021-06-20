@@ -54,6 +54,21 @@ def home():
     return render_template("index.html")
 
 
+@app.route('/api/v1.0/allCrimesData', methods=['GET','POST'])       
+def allCrimesData():
+
+  connection = create_engine(URI)
+
+  session = Session(connection)
+
+  allCrimes = psql.read_sql('select crime_type,no, dv from all_crimes order by 1', connection)
+   # Close the database connection session
+  session.close()
+
+  allCrimes = allCrimes.to_json(orient='records')
+
+  return allCrimes
+
 @app.route('/api/v1.0/locationData', methods=['GET','POST'])       
 def locationData():
 
